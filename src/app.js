@@ -1,5 +1,5 @@
-import getTxs from './controllers/txs/monobank.js';
+import txs from './controllers/txs/index.js';
 
-const txs = await getTxs();
-
-console.log(txs);
+for await (const tx of txs){
+    console.log(tx);
+}

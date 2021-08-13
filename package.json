@@ -3,5 +3,11 @@
     "type": "module",
     "scripts": {
         "start": "node src/app.js"
+    },
+    "devDependencies": {
+        "@types/node": "^16.6.1"
+    },
+    "dependencies": {
+        "event-emitter-async-iterator": "^2.1.1"
     }
 }

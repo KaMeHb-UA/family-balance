@@ -1,5 +1,11 @@
 import { request } from 'https';
 
+/**
+ * @arg {string} url
+ * @arg {string?} data
+ * @arg {{[x: string]: string}?} headers
+ * @return {Promise<string>}
+ */
 export default (url, data, headers) => new Promise((resolve, reject) => {
     const req = request(url, { headers: headers || {} }, res => {
         if(res.statusCode < 200 || res.statusCode >= 300){
@@ -10,6 +16,6 @@ export default (url, data, headers) => new Promise((resolve, reject) => {
         res.on('end', () => resolve(Buffer.concat(body).toString()));
     });
     req.on('error', err => reject(err));
-    if(data) req.write(postData);
+    if(data) req.write(data);
     req.end();
 });
