@@ -1,5 +1,5 @@
-import getCurrency from './controllers/currencyRate/monobank.js';
+import getTxs from './controllers/txs/monobank.js';
 
-const curr = await getCurrency();
+const txs = await getTxs();
 
-console.log(curr);
+console.log(txs);

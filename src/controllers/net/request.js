@@ -1,7 +1,7 @@
 import { request } from 'https';
 
-export default (url, data) => new Promise((resolve, reject) => {
-    const req = request(url, res => {
+export default (url, data, headers) => new Promise((resolve, reject) => {
+    const req = request(url, { headers: headers || {} }, res => {
         if(res.statusCode < 200 || res.statusCode >= 300){
             return reject(new Error('request returned bad status code ' + res.statusCode));
         }
