@@ -1,4 +1,4 @@
-import getCurrency from './controllers/currency/monobank.js';
+import getCurrency from './controllers/currencyRate/monobank.js';
 
 const curr = await getCurrency();
 
