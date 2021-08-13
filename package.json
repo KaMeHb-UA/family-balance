@@ -8,6 +8,7 @@
         "@types/node": "^16.6.1"
     },
     "dependencies": {
-        "event-emitter-async-iterator": "^2.1.1"
+        "event-emitter-async-iterator": "^2.1.1",
+        "mongodb": "^4.1.0"
     }
 }

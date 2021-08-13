@@ -1,5 +1,6 @@
-import txs from './controllers/txs/index.js';
+import txs from './controllers/db/txs.js';
 
+let i = 0;
 for await (const tx of txs){
-    console.log(tx);
+    console.log(tx, i++);
 }
