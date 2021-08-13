@@ -2,10 +2,7 @@ version: '3'
 
 services:
   app:
-    #build: .
-    image: node:14-alpine
-    volumes:
-      - .:/app
+    build: .
     environment:
       MONOBANK_TOKEN: ${MONOBANK_TOKEN}
       MONGO_HOST: db
@@ -15,9 +12,6 @@ services:
       MONGO_DB: family-balance
       TG_BOT_TOKEN: ${TG_BOT_TOKEN}
       TG_CHAT: ${TG_CHAT}
-    command:
-      - node
-      - /app/src/app.js
 
   db:
     image: mongo
