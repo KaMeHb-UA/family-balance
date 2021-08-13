@@ -13,6 +13,8 @@ services:
       MONGO_USER: ${MONGO_USER}
       MONGO_PASS: ${MONGO_PASS}
       MONGO_DB: family-balance
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN}
+      TG_CHAT: ${TG_CHAT}
     command:
       - node
       - /app/src/app.js

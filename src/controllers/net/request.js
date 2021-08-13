@@ -7,9 +7,9 @@ import { request } from 'https';
  * @return {Promise<string>}
  */
 export default (url, data, headers) => new Promise((resolve, reject) => {
-    const req = request(url, { headers: headers || {} }, res => {
+    const req = request(url, { method: data ? 'POST' : 'GET', headers: headers || {} }, res => {
         if(res.statusCode < 200 || res.statusCode >= 300){
-            return reject(new Error('request returned bad status code ' + res.statusCode));
+            return reject(new Error(`request to ${url} returned bad status code ${res.statusCode}`));
         }
         const body = [];
         res.on('data', chunk => body.push(chunk));

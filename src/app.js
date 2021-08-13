@@ -1,6 +1,6 @@
 import txs from './controllers/db/txs.js';
+import sendTg from './controllers/bot/tg.js';
 
-let i = 0;
 for await (const tx of txs){
-    console.log(tx, i++);
+    await sendTg(tx);
 }
