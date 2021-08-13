@@ -14,7 +14,7 @@ services:
       TG_CHAT: ${TG_CHAT}
 
   db:
-    image: mongo
+    image: mongo:4.4
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
