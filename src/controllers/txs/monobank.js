@@ -9,9 +9,14 @@ let lastId;
 const { MONOBANK_TOKEN } = process.env;
 
 async function getTxs(){
-    /** @type {{id: string, time: number, description: string, mcc: number, originalMcc: number, amount: number, operationAmount: number,currencyCode: number, commissionRate: number, cashbackAmount: number, balance: number, hold: boolean, receiptId: string}[]} */
-    const txs = await request('personal/statement/0/' + (Math.floor(Date.now() / 1000) - 2678400), null, MONOBANK_TOKEN);
-    return txs;
+    try{
+        /** @type {{id: string, time: number, description: string, mcc: number, originalMcc: number, amount: number, operationAmount: number,currencyCode: number, commissionRate: number, cashbackAmount: number, balance: number, hold: boolean, receiptId: string}[]} */
+        const txs = await request('personal/statement/0/' + (Math.floor(Date.now() / 1000) - 2678400), null, MONOBANK_TOKEN);
+        return txs;
+    } catch(e){
+        console.log('[monobank]: Failed to update the data: ' + e.message);
+        return [];
+    }
 }
 
 async function getFormalTxs(){

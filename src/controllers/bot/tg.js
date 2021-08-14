@@ -1,3 +1,4 @@
+import sleep from '../../helpers/sleep.js';
 import request from '../net/request.js';
 
 const {
@@ -7,13 +8,22 @@ const {
 
 /** @arg {string} text */
 async function sendMessage(text){
-    await request(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, JSON.stringify({
-        chat_id: TG_CHAT,
-        parse_mode: 'HTML',
-        text,
-    }), {
-        'Content-Type': 'application/json'
-    });
+    let sent = false;
+    while(!sent){
+        try{
+            await request(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, JSON.stringify({
+                chat_id: TG_CHAT,
+                parse_mode: 'HTML',
+                text,
+            }), {
+                'Content-Type': 'application/json'
+            });
+            sent = true;
+        } catch(e){
+            console.log('[telegram]: Failed to send message: ' + e.message + '\nRetry in 5s');
+            await sleep(5000);
+        }
+    }
 }
 
 /** @arg {string} rawText */
